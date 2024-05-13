@@ -20,12 +20,10 @@ int main(int argc, char **argv)
         if(!init_args(&args, argc, argv))
             exit_error("what the fuck");
         init_forks(forks, &args);
-
         if(!init_philo(&args, &prog, forks, philo))
             exit_error("what the hell");
-        if(!init_threads(philo, forks, &prog))
+        if(init_threads(philo, forks, &prog))
             exit_error("what the shiii");
-        printf("man\n");
     }
     //destroy_all_threads();
     else

@@ -30,6 +30,7 @@ void init_forks(pthread_mutex_t forks[], t_args *args)
 int init_philo(t_args *args, t_prog *prog, pthread_mutex_t *forks, t_philo *philo)
 {
     int i = 0;
+    prog_init(philo, prog);
     while(i < args->philo_nbr)
     {
         philo[i].philo_nbr = args->philo_nbr;
@@ -46,7 +47,7 @@ int init_philo(t_args *args, t_prog *prog, pthread_mutex_t *forks, t_philo *phil
         philo[i].write_lock = &prog->write_lock;
         philo[i].eating = 0;
         philo[i].nbr_of_meals = args->nbr_of_meals;
-        philo[i].dead = prog->death_flag;
+        philo[i].dead = &prog->death_flag;
         philo[i].left_fork = &forks[i];
         philo[i].meals_counter = 0;
         philo[i].right_fork = &forks[(i - 1 + philo->philo_nbr) % philo->philo_nbr];
@@ -59,20 +60,17 @@ int init_threads(t_philo *philo, pthread_mutex_t *forks, t_prog *prog)
 {
     pthread_t thread;
     int i = 0;
-    printf("man\n");
+
     if(pthread_create(&thread, NULL, &monitor, prog->philo) != 0)
         exit_error("Error creating monitor thread");
-    printf("this thread id is %ld\n", thread);
     while(i < philo->philo_nbr)
     {
         pthread_create(&philo[i].thread, NULL, &routine, &philo[i]);
         i++;
     }
-printf("ila\n");
     if(pthread_join(thread, NULL) != 0)
         exit_error("Error joining monitor thread");
     i = 0;
-printf("man\n");
     while(i < philo->philo_nbr)
     {
         if(pthread_join(philo[i].thread, NULL)!= 0)

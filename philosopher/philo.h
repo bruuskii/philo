@@ -46,7 +46,7 @@ typedef struct s_args
 
 typedef struct s_prog
 {
-    int *death_flag;
+    int death_flag;
     pthread_mutex_t dead_lock;
     pthread_mutex_t meal_lock;
     pthread_mutex_t write_lock;
@@ -58,13 +58,13 @@ int exit_error(char *str);
 int	ft_atoi(const char *str);
 void init_forks(pthread_mutex_t forks[], t_args *args);
 int init_philo(t_args *args, t_prog *prog, pthread_mutex_t *forks, t_philo *philo);
-int get_time(void);
+size_t get_time(void);
 void* routine(void *arg);
 void thinking(t_philo *philo);
 void sleeping(t_philo *philo);
 void eating(t_philo *philo);
 int check_death(t_philo *philo);
-void print(t_philo *philo, char *str);
+void print(t_philo *philo, char *s);
 void precise_usleep(size_t time);
 void prog_init(t_philo *philos, t_prog *prog);
 void* monitor(void *arg);

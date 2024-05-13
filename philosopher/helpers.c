@@ -46,10 +46,11 @@ int exit_error(char *str)
     return 0;
 }
 
-int get_time(void)
+size_t get_time(void)
 {
 	struct timeval tv;
-	size_t time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	gettimeofday(&tv, NULL);
+	size_t time = (tv.tv_sec / 1000) + (tv.tv_usec * 1000);
 	return time;
 }
 
@@ -60,9 +61,13 @@ void precise_usleep(size_t time)
 		usleep(500);
 }
 
-void print(t_philo *philo, char *str)
+void print(t_philo *philo, char *s)
 {
+	size_t time;
+
 	pthread_mutex_lock(philo->write_lock);
-	printf("%ld %d %s\n", get_time() - philo->start_time, philo->id, str);
+	time = get_time() - philo->start_time;
+	if(!dead_monitor(philo))
+		printf("%ld %d %s\n", time, philo->id, s);
 	pthread_mutex_unlock(philo->write_lock);
 }

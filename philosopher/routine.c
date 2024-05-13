@@ -6,7 +6,7 @@ void eating(t_philo *philo)
 	print(philo, "has taken a fork");
 	if(philo->philo_nbr == 1)
 	{
-		precise_usleep(philo->time_to_die);
+		usleep(philo->time_to_die * 1000);
 		pthread_mutex_unlock(philo->right_fork);
 		return ;
 	}
@@ -18,7 +18,7 @@ void eating(t_philo *philo)
 	philo->last_meal_eaten = get_time();
 	philo->meals_counter++;
 	pthread_mutex_unlock(philo->meal_lock);
-	precise_usleep(philo->time_to_eat);
+	usleep(philo->time_to_eat * 1000);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
@@ -27,7 +27,7 @@ void eating(t_philo *philo)
 void sleeping(t_philo *philo)
 {
     print(philo, "sleeping");
-    precise_usleep(philo->time_to_sleep);
+    usleep(philo->time_to_sleep * 1000);
 }
 
 void thinking(t_philo *philo)
