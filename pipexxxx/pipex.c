@@ -6,7 +6,7 @@
 /*   By: izouine <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 04:33:58 by izouine           #+#    #+#             */
-/*   Updated: 2024/04/18 16:44:30 by izouine          ###   ########.fr       */
+/*   Updated: 2024/05/14 04:54:42 by izouine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static void	parent(char **argv, int fd[2])
 	char	*lol;
 
 	pathh = NULL;
-	if (!ft_strncmp("sleep", argv[2], 4))
-		wait(NULL);
+	//if (!ft_strncmp("sleep", argv[2], 4))
+		//wait(NULL);
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
