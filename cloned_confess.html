@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Confess</title>
+    <style>
+        body {
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8)), url('/result.png');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            font-family: 'Edwardian Script ITC', cursive, sans-serif;
+            margin: 0;
+            height: 110vh;
+            overflow: hidden;
+
+        }
+        header {
+            /* text-align:center; */
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #confessTitle {
+            font-size: 10px;
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            animation: zoomIn 5s forwards;
+        }
+        @keyframes zoomIn {
+            0% {
+                font-size: 1px;
+            }
+            100% {
+                font-size: 3.6em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="confessTitle">Confess</h1>
+    </header>
+</body>
+
+</html>
