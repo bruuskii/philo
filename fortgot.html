@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        body {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7)),url('/result.png');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            font-family: 'Edwardian Script ITC', cursive, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: moveFromTop 5s forwards;
+            /*align-items: center;*/
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1px;
+        }
+
+        form {
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+            /* White shadow effect */
+            /*width: %;
+            /*margin-left: 80px;
+            /* Animation for fade-in effect */
+        }
+
+
+        @keyframes moveFromTop {
+            0% {
+                transform: translateY(-30vh);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(-15vh);
+                opacity: 1;
+            }
+        }
+
+        input[type="email"],
+        input[type="submit"] {
+            width: 70%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 90px;
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Semi-transparent white background */
+            color: #ffffff;
+            /* Light text color */
+            font-size: 16px;
+            outline: none;
+            /* Remove outline on focus */
+            transition: background-color 0.3s;
+            /* Smooth transition for background color */
+        }
+
+        input[type="email"]:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            /* Lighter background color on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #3399ff;
+            /* Blue button color */
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1a8cff;
+            /* Darker blue color on hover */
+        }
+
+        p {
+            text-align: center;
+            /* Center the paragraph */
+            margin-top: 1px;
+            /* Add some space above the link */
+        }
+
+        a.forgot-password {
+            color: transparent;
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            /* Mixed colors gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-decoration: none;
+            /* Set the link color */
+            transition: color 0.3s;
+            /* Smooth transition for text color */
+        }
+
+        a.forgot-password:hover {
+            color: #ffffff;
+            /* Change text color on hover */
+        }
+
+        a.login {
+            color:transparent;
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            /* Mixed colors gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-decoration: underline;
+            /* Set the link color */
+            transition: color 0.3s;
+            /* Smooth transition for text color */
+        }
+
+        a.login:hover {
+            color: #ffffff;
+            /* Change text color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1><p><a href="#" class="forgot-password">Forgot Password ?</a></p></h1>
+
+    <form>
+        <input type="email" name="email" placeholder="Enter your email">
+        <input type="submit" value="Reset Password">
+    </form>
+    <p>Remembered your password? <a href="confess_by_netflex.html" class = "login">login here</a></p>
+</body>
+
+</html>

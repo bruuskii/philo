@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7)),url('/result.png');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            font-family: 'Edwardian Script ITC', cursive, sans-serif;
+            margin: 0;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+        }
+
+        #confessTitle {
+            font-size: 1px;
+            /* Start with a very small font size */
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            /* Mixed colors gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            animation: zoomIn 5s forwards;
+            /* Animation duration and timing */
+        }
+
+        @keyframes zoomIn {
+            0% {
+                font-size: 1px;
+                /* Start with a very small font size */
+            }
+
+            100% {
+                font-size: 3.6em;
+                /* End with the desired font size */
+            }
+        }
+
+        #confessTitle span:nth-child(3) {
+            animation: zoomInThird 5s forwards;
+            /* Animation for the third character */
+        }
+
+        @keyframes zoomInThird {
+            0% {
+                font-size: 1px;
+                /* Start with a very small font size */
+            }
+
+            100% {
+                font-size: 1em;
+                /* End with a larger font size for the third character */
+            }
+        }
+
+        /*Style for the sign-up form*/
+        form {
+            text-align: center;
+            padding: 20px;
+            border-radius: 123456789px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            /* White shadow effect */
+            animation: fadeIn 20s forwards;
+            width: 60%;
+            margin: auto;
+            /* Animation for fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                /* Start with opacity 0 */
+            }
+
+            100% {
+                opacity: 1;
+                /* End with opacity 1 */
+            }
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        input[type="date"],
+         input[type="submit"] { 
+            width: 120%;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-left: -25px;
+            border: none;
+            border-radius: 20000px;
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Semi-transparent white background */
+            color: #ffffff;
+            /* Light text color */
+            font-size: 16px;
+            outline: none;
+            /* Remove outline on focus */
+            transition: background-color 0.3s;
+            /* Smooth transition for background color */
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        ct:focus,
+        input[type="date"]:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            /* Lighter background color on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #3399ff;
+            /* Blue button color */
+            cursor: pointer;
+            margin-left: -17px;
+
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1a8cff;
+            /* Darker blue color on hover */
+        }
+
+        p {
+            text-align: center;
+            /* Center the paragraph */
+            margin-top: 10px;
+            /* Add some space above the link */
+        }
+
+        a {
+            color: #fff;
+            /* Set the link color */
+            text-decoration: underline;
+            /* Remove underline */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /* Underline on hover */
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1 id="confessTitle"></h1>
+    </header>
+
+    <!-- Sign-up form -->
+    <form id="signUpForm" action="confess_by_netflex.html" method="POST">
+        <input type="text" name="firstname" placeholder="First Name">
+        <input type="text" name="lastname" placeholder="Last Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="submit"  value="Sign Up">
+    </form>
+    <p>Already have an account? <a href="confess_by_netflex.html">Sign in</a></p>
+
+    <script>
+        // Get the sign-up form
+        const signUpForm = document.getElementById('signUpForm');
+
+        // Function to animate the sign-up form
+        function animateSignUpForm() {
+            signUpForm.style.animation = 'fadeIn 5s forwards'; // Apply fade-in animation
+        }
+
+        // Call the animation function after a delay (adjust as needed)
+        setTimeout(animateSignUpForm, 1000); // Delay the animation for 5 seconds (same duration as "Sign Up" animation)
+    </script>
+
+</body>
+
+</html>
