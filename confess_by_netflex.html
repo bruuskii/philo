@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8)), url('https://source.unsplash.com/1600x900/?cinema,film');
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8)), url('https://www.colleenhoover.com/cdn/shop/files/Hands_946x1262.webp?v=1694187898');
             background-size: cover;
             background-position: center;
             color: #ffffff;
@@ -60,7 +60,7 @@
         }
 
         #confessTitle span:nth-child(3) {
-            animation: zoomInThird 5s forwards;
+            animation: zoomInThird 1s forwards;
         }
 
         @keyframes zoomInThird {
@@ -78,7 +78,7 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-            animation: fadeIn 5s forwards;
+            animation: fadeIn 1s forwards;
             width: 60%;
             margin: auto;
             background-color: rgba(0, 0, 0, 0);
@@ -148,15 +148,16 @@
             content: '';
             position: absolute;
             left: 0;
-            bottom: -2px; /* Adjust this value to position the underline */
+            bottom: -2px;
             width: 100%;
-            height: 2px; /* Adjust this value for the thickness of the underline */
-            background-color: #3399ff; /* Color of the underline */
-            transition: background-color 0.3s;
+            height: 2px;
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
         }
 
         p a:hover::after {
-            background-color: #1a8cff; /* Hover color of the underline */
+            background-color: #1a8cff; 
         }
 
         body,

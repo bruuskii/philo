@@ -7,7 +7,7 @@
     <title>Forgot Password</title>
     <style>
         body {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7)),url('https://source.unsplash.com/1600x900/?cinema,film');
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7)), url('https://www.colleenhoover.com/cdn/shop/files/Hands_946x1262.webp?v=1694187898');
             background-size: cover;
             background-position: center;
             color: #ffffff;
@@ -18,7 +18,6 @@
             flex-direction: column;
             justify-content: center;
             animation: moveFromTop 1s forwards;
-            /*align-items: center;*/
         }
 
         h1 {
@@ -31,21 +30,15 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-            /* White shadow effect */
-            /*width: %;
-            /*margin-left: 80px;
-            /* Animation for fade-in effect */
         }
-
 
         @keyframes moveFromTop {
             0% {
                 transform: translateY(-30vh);
                 opacity: 0;
             }
-
             100% {
-                transform: translateY(-15vh);
+                transform: translateY(-5vh);
                 opacity: 1;
             }
         }
@@ -58,83 +51,77 @@
             border: none;
             border-radius: 90px;
             background-color: rgba(255, 255, 255, 0.2);
-            /* Semi-transparent white background */
             color: #ffffff;
-            /* Light text color */
             font-size: 16px;
             outline: none;
-            /* Remove outline on focus */
             transition: background-color 0.3s;
-            /* Smooth transition for background color */
         }
 
         input[type="email"]:focus {
             background-color: rgba(255, 255, 255, 0.3);
-            /* Lighter background color on focus */
         }
 
         input[type="submit"] {
             background-color: #3399ff;
-            /* Blue button color */
             cursor: pointer;
         }
 
         input[type="submit"]:hover {
             background-color: #1a8cff;
-            /* Darker blue color on hover */
         }
 
         p {
             text-align: center;
-            /* Center the paragraph */
             margin-top: 1px;
-            /* Add some space above the link */
         }
 
-        a.forgot-password {
-            color: transparent;
-            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
-            /* Mixed colors gradient */
-            -webkit-background-clip: text;
-            background-clip: text;
-            text-decoration: none;
-            /* Set the link color */
-            transition: color 0.3s;
-            /* Smooth transition for text color */
-        }
-
-        a.forgot-password:hover {
-            color: #ffffff;
-            /* Change text color on hover */
-        }
-
+        a.forgot-password,
         a.login {
-            color:transparent;
+            position: relative;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
             background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
-            /* Mixed colors gradient */
             -webkit-background-clip: text;
             background-clip: text;
-            text-decoration: underline;
-            /* Set the link color */
-            transition: color 0.3s;
-            /* Smooth transition for text color */
+            color: transparent;
+            display: inline-block;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
+                         2px 2px 2px rgba(0, 0, 0, 0.5),
+                         4px 4px 4px rgba(0, 0, 0, 0.5),
+                         4px 4px 4px rgba(0, 0, 0, 0.5);
         }
 
+        a.forgot-password:hover,
         a.login:hover {
             color: #ffffff;
-            /* Change text color on hover */
+        }
+
+        a.forgot-password::after,
+        a.login::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        a.forgot-password:hover::after,
+        a.login:hover::after {
+            transform: scaleX(1.2);
         }
     </style>
 </head>
 
 <body>
-    <h1><p><a href="#" class="forgot-password">Forgot Password ?</a></p></h1>
-
     <form>
         <input type="email" name="email" placeholder="Enter your email">
         <input type="submit" value="Reset Password">
     </form>
-    <p>Remembered your password? <a href="confess_by_netflex.html" class = "login">login here</a></p>
+    <p>Remembered your password? <a href="confess_by_netflex.html" class="login">login here</a></p>
 </body>
 
 </html>
