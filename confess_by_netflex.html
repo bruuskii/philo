@@ -46,7 +46,8 @@
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
                          2px 2px 2px rgba(0, 0, 0, 0.1),
                          4px 4px 4px rgba(0, 0, 0, 0.5),
-                         4px 4px 4px rgba(0, 0, 0, 0.5);        }
+                         4px 4px 4px rgba(0, 0, 0, 0.5);        
+        }
 
         @keyframes zoomIn {
             0% {
@@ -128,7 +129,8 @@
             margin-top: 10px;
         }
 
-        p a{
+        p a {
+            position: relative;
             font-family: Arial, sans-serif;
             font-size: 16px;
             background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
@@ -136,22 +138,25 @@
             background-clip: text;
             color: transparent;
             display: inline-block;
-            text-decoration: underline;
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
                          2px 2px 2px rgba(0, 0, 0, 0.1),
                          4px 4px 4px rgba(0, 0, 0, 0.1),
                          4px 4px 4px rgba(0, 0, 0, 60);
-
         }
-        a{
-            color: #fff;
+
+        p a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Adjust this value to position the underline */
+            width: 100%;
+            height: 2px; /* Adjust this value for the thickness of the underline */
+            background-color: #3399ff; /* Color of the underline */
+            transition: background-color 0.3s;
         }
-        
 
-
-        p a:hover {
-            border-color: #3399ff;
-            text-decoration: underline;
+        p a:hover::after {
+            background-color: #1a8cff; /* Hover color of the underline */
         }
 
         body,
