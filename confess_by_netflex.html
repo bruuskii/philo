@@ -12,7 +12,7 @@
             background-size: cover;
             background-position: center;
             color: #ffffff;
-            font-family: 'Edwardian Script ITC  ', cursive, sans-serif;
+            font-family: 'Edwardian Script ITC', cursive, sans-serif;
             margin: 0;
         }
 
@@ -46,7 +46,7 @@
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
                          2px 2px 2px rgba(0, 0, 0, 0.1),
                          4px 4px 4px rgba(0, 0, 0, 0.5),
-                         4px 4px 4px rgba(0, 0, 0, 0.5);        
+                         4px 4px 4px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes zoomIn {
@@ -115,6 +115,11 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
 
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #95a0ac;
+        }
+
         input[type="submit"] {
             background-color: #3399ff;
             cursor: pointer;
@@ -157,7 +162,8 @@
         }
 
         p a:hover::after {
-            background-color: #1a8cff; 
+            background-color: #1a8cff;
+            transform: scaleX(1.2);
         }
 
         body,
@@ -187,7 +193,7 @@
             position: absolute;
             top: 50%;
             right: 10px;
-            transform: translateY(-70%);
+            transform: translateY(-50%);
             cursor: pointer;
             color: #ffffff;
             display: none;
