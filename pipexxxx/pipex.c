@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <string.h>
 
-char	*join(char **argv, int k, char **cmd, char *ENV[])
+char	*join(char **argv, int k, char **cmd, char **envp)
 {
 	int		i;
 	char	*temp;
@@ -28,7 +28,7 @@ char	*join(char **argv, int k, char **cmd, char *ENV[])
 
 	i = 0;
 	temp = NULL;
-	splited = find_path(ENV);
+	splited = find_path(envp);
 	cmd = ft_split(argv[k], ' ');
 	while (splited[i])
 	{
@@ -43,7 +43,7 @@ char	*join(char **argv, int k, char **cmd, char *ENV[])
 	return (NULL);
 }
 
-static void	child(char **argv, int fd[2], char *ENV[])
+static void	child(char **argv, int fd[2], char **envp)
 {
 	char	*path;
 	char	**cmd;
@@ -52,7 +52,7 @@ static void	child(char **argv, int fd[2], char *ENV[])
 	char	*lol;
 
 	pathh = NULL;
-	path = join(argv, 2, pathh, ENV);
+	path = join(argv, 2, pathh, envp);
 	if (path == NULL)
 	{
 		msg = "zsh: command not found :";
@@ -70,7 +70,7 @@ static void	child(char **argv, int fd[2], char *ENV[])
 	exitt(1);
 }
 
-static void	parent(char **argv, int fd[2], char *ENV[])
+static void	parent(char **argv, int fd[2], char **envp)
 {
 	char	*path;
 	char	**cmd2;
@@ -84,7 +84,7 @@ static void	parent(char **argv, int fd[2], char *ENV[])
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
-	path = join(argv, 3, pathh, ENV);
+	path = join(argv, 3, pathh, envp);
 	if (!path)
 	{
 		message = "zsh: command not found :";
@@ -106,7 +106,7 @@ void	exitt(int check)
 		exit(1);
 }
 
-int	main(int argc, char **argv, char *ENV[])
+int	main(int argc, char **argv, char **envp)
 {
 	int	fd[2];
 	int	in;
@@ -129,8 +129,8 @@ int	main(int argc, char **argv, char *ENV[])
 	if (pid < 0)
 		exitt(1);
 	else if (pid == 0 && in != -1)
-		child(argv, fd, ENV);
+		child(argv, fd, envp);
 	else if (pid > 0)
-		parent(argv, fd, ENV);
+		parent(argv, fd, envp);
 	la_fin(in);
 }
