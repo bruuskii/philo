@@ -61,9 +61,8 @@ void	ft_free(char **arr)
 int	la_fin(int i)
 {
 	i = 0;
-	while (wait(NULL))
-		;
-	return (0);
+	waitpid(-1, &i, 0);
+	return (i);
 }
 
 int	ft_strlen(char *str)

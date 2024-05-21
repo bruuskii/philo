@@ -6,7 +6,7 @@
 /*   By: izouine <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 04:33:58 by izouine           #+#    #+#             */
-/*   Updated: 2024/05/14 04:54:42 by izouine          ###   ########.fr       */
+/*   Updated: 2024/04/18 16:44:30 by izouine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@
 #include <unistd.h>
 #include <string.h>
 
-char	*join(char **argv, int k, char **cmd)
+char	*join(char **argv, int k, char **cmd, char *ENV[])
 {
 	int		i;
 	char	*temp;
 	char	*two_joined;
 	char	**splited;
-	char	*path;
 
 	i = 0;
 	temp = NULL;
-	path = "/usr/local/bin:/usr/bin:/bin:\
-					/usr/sbin:/sbin:/usr/local/munki";
-	splited = ft_split(path, ':');
+	splited = find_path(ENV);
 	cmd = ft_split(argv[k], ' ');
 	while (splited[i])
 	{
@@ -46,7 +43,7 @@ char	*join(char **argv, int k, char **cmd)
 	return (NULL);
 }
 
-static void	child(char **argv, int fd[2])
+static void	child(char **argv, int fd[2], char *ENV[])
 {
 	char	*path;
 	char	**cmd;
@@ -55,7 +52,7 @@ static void	child(char **argv, int fd[2])
 	char	*lol;
 
 	pathh = NULL;
-	path = join(argv, 2, pathh);
+	path = join(argv, 2, pathh, ENV);
 	if (path == NULL)
 	{
 		msg = "zsh: command not found :";
@@ -73,7 +70,7 @@ static void	child(char **argv, int fd[2])
 	exitt(1);
 }
 
-static void	parent(char **argv, int fd[2])
+static void	parent(char **argv, int fd[2], char *ENV[])
 {
 	char	*path;
 	char	**cmd2;
@@ -82,12 +79,12 @@ static void	parent(char **argv, int fd[2])
 	char	*lol;
 
 	pathh = NULL;
-	//if (!ft_strncmp("sleep", argv[2], 4))
-		//wait(NULL);
+	if (!ft_strncmp("sleep", argv[2], 4))
+		wait(NULL);
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
-	path = join(argv, 3, pathh);
+	path = join(argv, 3, pathh, ENV);
 	if (!path)
 	{
 		message = "zsh: command not found :";
@@ -109,7 +106,7 @@ void	exitt(int check)
 		exit(1);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char *ENV[])
 {
 	int	fd[2];
 	int	in;
@@ -132,8 +129,8 @@ int	main(int argc, char **argv)
 	if (pid < 0)
 		exitt(1);
 	else if (pid == 0 && in != -1)
-		child(argv, fd);
+		child(argv, fd, ENV);
 	else if (pid > 0)
-		parent(argv, fd);
+		parent(argv, fd, ENV);
 	la_fin(in);
 }

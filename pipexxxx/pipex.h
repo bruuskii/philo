@@ -20,7 +20,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-char	*join(char **argv, int k, char **cmd);
+char	*join(char **argv, int k, char **cmd, char *ENV[]);
 char	*file(char **argv);
 char	*ft_strjoin(char *line, char *buff);
 char	**ft_split(char const *s, char c);
@@ -29,4 +29,5 @@ void	ft_free(char **argv);
 int		la_fin(int i);
 int		ft_strlen(char *str);
 int		ft_strncmp(char *s1, char *s2, int n);
+char    **find_path(char *ENV[]);
 #endif

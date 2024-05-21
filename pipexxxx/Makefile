@@ -1,4 +1,4 @@
-SRCS = ft_split.c test.c pipex.c
+SRCS = ft_split.c test.c find_path.c pipex.c
 OBJS = ${SRCS:.c=.o}
 NAME = pipex
 CC = cc
