@@ -35,20 +35,6 @@
                          4px 4px 4px rgba(0, 0, 0, 0);
         }
 
-        #confessTitle1 {
-            font-size: 1px;
-            background: linear-gradient(45deg, #ff3399, #3399ff, #66ff33);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            animation: zoomIn 1s forwards;
-            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
-                         2px 2px 2px rgba(0, 0, 0, 0.1),
-                         4px 4px 4px rgba(0, 0, 0, 0.5),
-                         4px 4px 4px rgba(0, 0, 0, 0.5);
-        }
-
         @keyframes zoomIn {
             0% {
                 font-size: 1px;
@@ -215,7 +201,7 @@
 
 <body>
     <header>
-        <h1 id="confessTitle">Conf</h1><h1 id="confessTitle1">e</h1><h1 id="confessTitle">ss</h1>
+        <h1 id="confessTitle">Confess</h1>
     </header>
 
     <form id="loginForm">
@@ -227,47 +213,8 @@
         <input type="submit" value="Login">
     </form>
     <p><a href="fortgot.html">Forgot Password ?</a></p>
-    <p class="special-text">Don't have an account? <a href="sign_up.html" onclick="zoomLetter()">Sign up</a></p>
+    <p class="special-text">Don't have an account? <a href="sign_up.html" >Sign up</a></p>
     <script>
-        const loginForm = document.getElementById('loginForm');
-
-        function animateLoginForm() {
-            loginForm.style.animation = 'fadeIn 5s forwards';
-        }
-
-        setTimeout(animateLoginForm, 5000);
-
-        function zoomLetter() {
-            var letter = document.getElementById("confessTitle1");
-            letter.style.transition = "transform 2s ease-in-out";
-            letter.style.transform = "translate(-50%, -50%) scale(1600)";
-        }
-
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const passwordIcon = document.querySelector('.toggle-password');
-            const passwordType = passwordInput.getAttribute('type');
-            if (passwordType === 'password') {
-                passwordInput.setAttribute('type', 'text');
-                passwordIcon.classList.remove('fa-eye');
-                passwordIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.setAttribute('type', 'password');
-                passwordIcon.classList.remove('fa-eye-slash');
-                passwordIcon.classList.add('fa-eye');
-            }
-        }
-
-        const passwordInput = document.getElementById('password');
-        const passwordIcon = document.querySelector('.toggle-password');
-
-        passwordInput.addEventListener('input', function () {
-            if (passwordInput.value.length > 0) {
-                passwordIcon.style.display = 'block';
-            } else {
-                passwordIcon.style.display = 'none';
-            }
-        });
     </script>
 </body>
 
