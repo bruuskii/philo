@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: izouine <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 04:35:13 by izouine           #+#    #+#             */
+/*   Updated: 2024/05/27 04:35:15 by izouine          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void eating(t_philo *philo)
+void	eating(t_philo *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	print(philo, "has taken a fork");
-	if(philo->philo_nbr == 1)
+	if (philo->philo_nbr == 1)
 	{
 		usleep(philo->time_to_die * 1000);
 		pthread_mutex_unlock(philo->right_fork);
@@ -24,38 +36,40 @@ void eating(t_philo *philo)
 	pthread_mutex_unlock(philo->left_fork);
 }
 
-void sleeping(t_philo *philo)
+void	sleeping(t_philo *philo)
 {
-    print(philo, "sleeping");
-    usleep(philo->time_to_sleep * 1000);
+	print(philo, "sleeping");
+	usleep(philo->time_to_sleep * 1000);
 }
 
-void thinking(t_philo *philo)
+void	thinking(t_philo *philo)
 {
-    print(philo, "thinking");
+	print(philo, "thinking");
 }
 
-int dead_monitor(t_philo *philo)
+int	dead_monitor(t_philo *philo)
 {
 	pthread_mutex_lock(philo->dead_lock);
-	if(*philo->dead == 1)
-		return(pthread_mutex_unlock(philo->dead_lock), 1);
+	if (*philo->dead == 1)
+		return (pthread_mutex_unlock(philo->dead_lock), 1);
 	pthread_mutex_unlock(philo->dead_lock);
-	return 0;
+	return (0);
 }
 
-void* routine(void *arg)
+void	*routine(void *arg)
 {
-    t_philo* philo = (t_philo*)arg;
-    if(philo->id % 2 == 0)
-    {
-        precise_usleep(1);
-    }
-    while(!dead_monitor(philo))
-    {
-        eating(philo);
-        sleeping(philo);
-        thinking(philo);
-    }
-    return NULL;
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+	{
+		precise_usleep(1);
+	}
+	while (!dead_monitor(philo))
+	{
+		eating(philo);
+		sleeping(philo);
+		thinking(philo);
+	}
+	return (NULL);
 }
