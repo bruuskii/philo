@@ -56,9 +56,10 @@ int	init_threads(t_philo *philo, sem_t *forks, t_prog *prog)
 	int			i;
 
 	i = 0;
+	printf("init_threads\n");
 	if (pthread_create(&thread, NULL, &monitor, prog->philo) != 0)
 		exit_error("Error creating monitor thread");
-	pthread_create(&philo->thread, NULL, &routine, &philo);
+	pthread_create(&philo->thread, NULL, &routine, philo);
 	if (pthread_join(thread, NULL) != 0)
 		exit_error("Error joining monitor thread");
 	if (pthread_join(philo->thread, NULL) != 0)

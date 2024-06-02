@@ -27,7 +27,10 @@ void	child_process(t_args *args,t_philo *philo,int id,  sem_t *forks, t_prog *pr
 		init_threads(philo, forks, prog);
 	}
 	else
-		exit(0);
+	{
+		printf("Parent process\n");
+		exit(1);
+	}
 
 }
 
@@ -35,25 +38,30 @@ void	child_process(t_args *args,t_philo *philo,int id,  sem_t *forks, t_prog *pr
 
 int	main(int argc, char **argv)
 {
-	int	i;
-    t_args	args;
-    t_prog	prog;
-	t_philo	*philos;
-	sem_t	*forks;
+    int i;
+    t_args args;
+    t_prog prog;
+    t_philo *philos;
+    sem_t *forks;
 
-
-	if (argc >= 5)
-	{
-		i = 1;
+    if (argc >= 5)
+    {
+        i = 0;
         init_args(&args, argc, argv);
         prog.forks = init_forks(args.philo_nbr);
-		while (i < ft_atoi(argv[1]) + 1)
-		{
-			child_process(&args, philos,i, forks, &prog);
-			i++;
-		}
-	}
+        philos = malloc(sizeof(t_philo) * args.philo_nbr);
+        if (philos == NULL) {
+            exit_error("Memory allocation failed");
+        }
+        while (i < args.philo_nbr)
+        {
+            child_process(&args, &philos[i], i, prog.forks, &prog);
+			printf("%d", i);
+            i++;
+        }
+    }
 }
+
 
 
 
